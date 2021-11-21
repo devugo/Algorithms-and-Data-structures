@@ -17,6 +17,60 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+//  My Solution
+// function getSpace (no) {
+//   let space = ``;
+//   for (let n = 1; n <= no; n++) {
+//     space = `${space} `;
+//   }
+//   return space;
+// }
+// function getHash(no) {
+//   let hash = '';
+//   for (let n = 1; n <= no; n++) {
+//     hash = `${hash}#`;
+//   }
+//   return hash;
+// }
+// function steps(n) {
+//   for (let i = 1; i <= n; i++) {
+//     console.log(`${getHash(i)}${getSpace(n - i)}`)
+//   }
+// }
+
+//  Solution 1
+// function steps(n) {
+//   for (let row = 0; row < n; row++) {
+//     let stair = '';
+
+//     for (let column = 0; column < n; column++) {
+//       if (column <= row) {
+//         stair += '#'
+//       } else {
+//         stair += ' ';
+//       }
+//     }
+//     console.log(stair)
+//   }
+// }
+
+//  Solution 2 (Using recursion)
+function steps (n, row = 0, stair = '') {
+  if (n === row){
+    return;
+  }
+
+  if (n === stair.length) {
+    console.log(stair);
+    return steps(n, row + 1);
+  }
+
+  if (stair.length <= row){
+    stair += '#';
+  } else {
+    stair += ' ';
+  }
+  steps(n, row, stair);
+}
 
 module.exports = steps;
