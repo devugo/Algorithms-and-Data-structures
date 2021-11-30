@@ -14,6 +14,62 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+// function pyramid(n) {
+  //  My Solution
+  // function space (index, n, val) {
+  //   let ret = val;
+  //   for (let i = index+1; i < n; i++) {
+  //     ret = ' ' + ret + ' ';
+  //   }
+  //   return ret;
+  // }
+  // let val = '';
+  // for (let row = 0; row < n; row++) {
+
+  //   if (row === 0) {
+  //     val += '#';
+  //   } else {
+  //     val += '##';
+  //   }
+  //   console.log(space(row, n, val));
+  // }
+
+  //  Solution 1
+  // const midpoint = Math.floor((2 * n - 1) / 2);
+  // for (let row = 0; row < n; row++) {
+  //   let level = '';
+  //   for (let column = 0; column < 2 * n -1; column++) {
+  //     if (midpoint - row <= column && midpoint + row >= column) {
+  //       level += '#';
+  //     } else {
+  //       level += ' ';
+  //     }
+  //   }
+  //   console.log(level);
+  // }
+
+// }
+
+
+//  Solution 2
+function pyramid (n, row = 0, level = '') {
+  if (n === row) {
+    return;
+  }
+
+  if (level.length === 2 * n - 1) {
+    console.log(level);
+    return pyramid(n, row+1);
+  }
+  const midpoint = Math.floor((2 * n - 1) / 2);
+  let add;
+  if (midpoint - row <= level.length && midpoint + row >= level.length) {
+    add = '#';
+  } else {
+    add = ' ';
+  }
+  pyramid(n, row, level + add);
+
+}
 
 module.exports = pyramid;
